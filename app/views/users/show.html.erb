@@ -1,0 +1,17 @@
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<h2>Your projects</h2>
+<% @projects.each do |project| %>
+	<p><%= link_to project.name, project %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', root_url %>
