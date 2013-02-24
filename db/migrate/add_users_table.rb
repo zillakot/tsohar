@@ -1,0 +1,17 @@
+class AddUsersTable < ActiveRecord::Migration
+  def self.up
+    create_table :users do |t|
+      t.string :username
+      t.string :email
+      t.string :password_salt
+      t.string :encrypted_password
+      t.integer :user_role_id
+
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :users
+  end
+end

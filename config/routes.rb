@@ -1,4 +1,23 @@
 Tsohar::Application.routes.draw do
+
+  controller :sessions do
+    get '/login' => :new
+    post '/login' => :create
+  end
+
+  match 'logout' => 'sessions#destroy', :as => :logout
+
+  root :to => "projects#index"
+
+  resources :users
+
+  resources :projects do
+    match 'add_member' => 'members#add', :as => :add_member
+    resources :tasks do
+      resources :task_locks, :only => [:create]
+    end
+    resources :members
+end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
